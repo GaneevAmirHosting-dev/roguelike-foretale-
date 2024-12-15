@@ -1,0 +1,63 @@
+[
+    { 
+        "sprite": "img/texture/entity/levels/blocks/block.png",
+        "type": "block",
+        "x": 32,
+        "y": 400,
+        "width": 2000,
+        "height": 32 
+    },
+
+    { 
+        "sprite": "img/texture/entity/levels/blocks/block.png",
+        "type": "block",
+        "x": 100,
+        "y": 200,
+        "width": 128,
+        "height": 32
+    },
+
+    {
+        "sprite": "img/texture/entity/levels/Doors/image_1.png",
+        "index": 1,
+        "type": "door",
+        "x": 300,
+        "y": 200,
+        "width": 32,
+        "height": 64,
+        "isOpen": false
+    },
+
+    {
+        "sprite": "img/texture/entity/levels/leverRed/image_1.png",
+        "index": 1,
+        "type": "lever",
+        "x": 280,
+        "y": 180,
+        "width": 32,
+        "height": 32,
+        "animation": "leverAnimation"
+    },
+
+    {   
+        "sprite": "img/texture/entity/levels/Doors/image_1.png",
+        "index": 2,
+        "type": "door",
+        "x": 600,
+        "y": 200,
+        "width": 32,
+        "height": 64,
+        "isOpen": false
+    },
+
+    {
+        "sprite": "img/texture/entity/levels/leverGreen/image_1.png",
+        "index": 2,
+        "type": "lever",
+        "x": 580,
+        "y": 180,
+        "width": 32,
+        "height": 32,
+        "animation": "leverAnimation"
+    }
+  ]

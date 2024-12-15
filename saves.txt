@@ -1,0 +1,73 @@
+let objects = []; // Массив для хранения объектов из JSON
+
+// Функция для загрузки объектов из JSON файла
+const loadObjects = async (url) => {
+    const response = await fetch(url);
+    objects = await response.json();
+};
+
+// Функция для отрисовки объектов на канвасе
+const drawObjects = () => {
+    objects.forEach(obj => {
+        ctx.drawImage(obj.image, obj.x, obj.y, obj.width, obj.height);
+    });
+};
+
+// Функция для активации дверей и рычагов
+const activateLever = () => {
+    objects.forEach(obj => {
+        if (obj.type === 'lever' && isPlayerNear(obj)) {
+            // Проверяем, что игрок рядом с рычагом
+            if (event.code === 'KeyX') {
+                // Анимация активации рычага
+                playLeverAnimation(obj.id);
+                // Открываем дверь с тем же ID
+                openDoor(obj.id);
+            }
+        }
+    });
+};
+
+// Функция для проверки, находится ли игрок рядом с объектом
+const isPlayerNear = (obj) => {
+    return (
+        player.x < obj.x + obj.width + 32 &&
+        player.x + player.width > obj.x - 32 &&
+        player.y < obj.y + obj.height + 32 &&
+        player.y + player.height > obj.y - 32
+    );
+};
+
+// Функция для проигрывания анимации рычага
+const playLeverAnimation = (id) => {
+    // Логика для проигрывания анимации
+};
+
+// Функция для открытия двери
+const openDoor = (id) => {
+    objects.forEach(obj => {
+        if (obj.type === 'door' && obj.id === id) {
+            // Логика для открытия двери
+            obj.isOpen = true; // Например, устанавливаем флаг, что дверь открыта
+        }
+    });
+};
+
+// Обработчик событий для нажатия клавиши
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'KeyX') {
+        activateLever();
+    }
+});
+
+// Основной игровой цикл
+const gameLoop = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawObjects();
+    requestAnimationFrame(gameLoop);
+};
+
+// Загрузка объектов и запуск игрового цикла
+loadObjects('path/to/your/level_1.json').then(() => {
+    gameLoop();
+});
